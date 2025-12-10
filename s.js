@@ -13,13 +13,13 @@ const POSITION_THRESHOLD = 0.001;
 const ROTATION_THRESHOLD = 0.001;
 
 const server = http.createServer((req, res) => {
-    if (req.url === '/' || req.url === '/roadblocks.html') {
-        const filePath = path.join(__dirname, 'roadblocks.html');
+    if (req.url === '/' || req.url === '/index.html') {
+        const filePath = path.join(__dirname, '/index.html');
         fs.readFile(filePath, (err, data) => {
             if (err) {
                 res.writeHead(500);
-                res.end('Error loading roadblocks.html');
-                console.error('Error serving roadblocks.html:', err);
+                res.end('Error loading index.html');
+                console.error('Error serving index.html:', err);
                 return;
             }
             res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -276,4 +276,5 @@ wss.on('connection', (ws) => {
 server.listen(PORT, '0.0.0.0', () => {
     console.log(`High-performance WebSocket server listening on http://0.0.0.0:${PORT}`);
     console.log(`Update rate: ${UPDATE_RATE}fps, Batch interval: ${BATCH_INTERVAL}ms`);
+
 });
